@@ -1,4 +1,4 @@
-SELECT Products.Name AS Имя_продукта, Categories.Name AS Имя_категории
+SELECT Products.Name AS РРјСЏ_РїСЂРѕРґСѓРєС‚Р°, Categories.Name AS РРјСЏ_РєР°С‚РµРіРѕСЂРёРё
 FROM Products
 LEFT JOIN Products_Categories ON Products.Id = Products_Categories.ProductId
 LEFT JOIN Categories ON Products_Categories.CategoryId = Categories.Id
