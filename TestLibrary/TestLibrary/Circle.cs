@@ -2,10 +2,10 @@
 
 namespace ShapeLibrary
 {
-    public class Сircle : Shape
+    public class Circle : Shape
     {
         public double Radius { get; }
-        public Сircle(double radius)
+        public Circle(double radius)
         {
             if (radius > 0)
                 Radius = radius;
@@ -14,7 +14,7 @@ namespace ShapeLibrary
         }        
         public override double Square()
         {
-            return 2 * Math.PI * Radius;
+            return Math.PI * Radius * Radius;
         }       
     }
 }
