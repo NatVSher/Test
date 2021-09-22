@@ -32,14 +32,21 @@ namespace ShapeLibrary
             if (side > 0)
                 return side;
             else
-                throw new Exception("Длина стороны не может быть отрицательной или равной 0.");
+                throw new ArgumentException("Длина стороны не может быть отрицательной или равной 0.");
         }
         private bool IsTriangle(double a, double b, double c)
         {
-            if (a < b + c && b < a + c && c < a + b)
+            if (a > b + c || b > a + c || c > a + b)
+                throw new ArgumentException("Данные длины сторон не образуют треугольник");
+            else 
                 return true;
-            else
-                throw new Exception("Данные длины сторон не образуют треугольник");
+            
+        }
+        public bool IsRightTriangle()
+        {
+            double[] sides = new[] { SideA, SideB, SideC };
+            Array.Sort(sides);
+            return Math.Pow(sides[0], 2) + Math.Pow(sides[1], 2) == Math.Pow(sides[2], 2);
         }
     }
 }

@@ -7,37 +7,50 @@ namespace ShapeLibrary.Tests
     public class TriangleTest
     {       
         [TestMethod]
-        public void SquareRightTriangle()
+        public void SquareTriangle()
         {
-            var triangle = new Triangle(3, 4, 5);
+            var a = 5;
+            var b = 4;
+            var c = 5;
+            var triangle = new Triangle(a, b, c);
 
             var result = triangle.Square();
 
-            Assert.AreEqual(6, result);
+            Assert.AreEqual(9.165, result, 0.001);
         }
         [TestMethod]
         public void NotExistTriangle()
         {
-            try
-            {
-                var triangle = new Triangle(3, 4, 3);
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Данные длины сторон не образуют треугольник", e.Message);
-            }
+            var a = 5;
+            var b = 1;
+            var c = 1;
+
+            void action() => new Triangle(a, b, c);
+
+            Assert.ThrowsException<ArgumentException>(action);
         }
         [TestMethod]
         public void NotExistSide()
         {
-            try
-            {
-                var triangle = new Triangle(3, 4, -3);
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Длина стороны не может быть отрицательной или равной 0.", e.Message);
-            }
+            var a = -5;
+            var b = 1;
+            var c = 0;
+
+            void action() => new Triangle(a, b, c);
+
+            Assert.ThrowsException<ArgumentException>(action);
+        }
+        [TestMethod]
+        public void IsRightTriangle()
+        {
+            var a = 3;
+            var b = 4;
+            var c = 5;
+            var triangle = new Triangle(a, b, c);
+
+            var result = triangle.IsRightTriangle();
+
+            Assert.AreEqual(true, result);
         }
     }
 }

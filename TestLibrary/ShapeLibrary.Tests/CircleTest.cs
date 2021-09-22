@@ -13,19 +13,16 @@ namespace ShapeLibrary.Tests
 
             var result = circle.Square();
 
-            Assert.AreEqual(10.24 * Math.PI, result);
+            Assert.AreEqual(10.24 * Math.PI, result, 0.001);
         }
         [TestMethod]
         public void NotExistCircle()
         {
-            try
-            {
-                var circle = new Circle(0);
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Длина радиуса не может быть отрицательной или равной 0.", e.Message);
-            }
+            var r = 0;
+
+            void action() => new Circle(r);
+
+            Assert.ThrowsException<ArgumentException>(action);
         }
     }
 }
